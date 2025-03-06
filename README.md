@@ -2,100 +2,82 @@
 Этот скрипт автоматически обновляет пакеты на вашем сервере, удаляет ненужные зависимости и перезагружает систему при необходимости. Он настроен для работы с Ubuntu и Debian.
 
 ## Оглавление
-Требования
+1. Требования
+2. Установка
+3. Настройка cron
+4. Проверка работы
+5. Логирование
+6. Лицензия
 
-Установка
+## Требования
+* Сервер на базе Ubuntu или Debian.
+* Доступ к терминалу с правами root или пользователя с правами sudo.
 
-Настройка cron
-
-Проверка работы
-
-Логирование
-
-Лицензия
-
-Требования
-Сервер на базе Ubuntu или Debian.
-
-Доступ к терминалу с правами root или пользователя с правами sudo.
-
-Установка
-Подключитесь к серверу:
+## Установка
+### 1. Подключитесь к серверу.
 Используйте SSH для подключения к вашему VPS:
-
-bash
-Copy
+```
 ssh user@your_server_ip
-Скачайте скрипт:
+```
+### 2. Скачайте скрипт.
 Склонируйте репозиторий или загрузите скрипт вручную:
-
-bash
-Copy
-wget https://raw.githubusercontent.com/ваш-репозиторий/ваш-проект/main/auto-update.sh
-Переместите скрипт в /usr/local/bin:
-
-bash
-Copy
+```
+wget https://raw.githubusercontent.com/indie-master/auto-update/refs/heads/main/auto-update.sh
+```
+### 3. Переместите скрипт в ```/usr/local/bin```:
+```
 sudo mv auto-update.sh /usr/local/bin/auto-update.sh
-Сделайте скрипт исполняемым:
-
-bash
-Copy
+```
+### 4. Сделайте скрипт исполняемым:
+```
 sudo chmod +x /usr/local/bin/auto-update.sh
-Настройка cron
-Откройте crontab для редактирования:
-
-bash
-Copy
+```
+## Настройка cron
+### 1. Откройте crontab для редактирования:
+```
 sudo crontab -e
-Добавьте задачу:
+```
+### 2. Добавьте задачу:
 Вставьте строку для выполнения скрипта, например, каждые 14 дней в полночь:
-
-bash
-Copy
+```
 0 0 */14 * * /usr/local/bin/auto-update.sh
-Сохраните и закройте файл:
-
-В nano: Ctrl + O, затем Enter, и Ctrl + X.
-
-В vim: Esc, затем :wq и Enter.
-
-Проверка работы
-Запустите скрипт вручную:
-
-bash
-Copy
+```
+### 3. Сохраните и закройте файл:
+* В ```nano```: ```Ctrl + O```, затем ```Enter```, и ```Ctrl + X```.
+* В ```vim```: ```Esc```, затем ```:wq``` и ```Enter```.
+## Проверка работы
+### 1. Запустите скрипт вручную:
+```
 sudo /usr/local/bin/auto-update.sh
-Проверьте логи:
+```
+### 2. Проверьте логи:
 Откройте лог в реальном времени:
-
-bash
-Copy
+```
 tail -f /var/log/auto-update.log
+```
 Вы должны увидеть что-то вроде:
-
-Copy
+```
 Starting system update...
 Packages are available for upgrade. Proceeding with upgrade...
 System update completed. Waiting for 5 minutes before checking for reboot...
-Проверьте перезагрузку:
+```
+### 3. Проверьте перезагрузку:
 Через 5 минут система должна перезагрузиться, если это необходимо.
 
-Логирование
-Логи скрипта сохраняются в файл /var/log/auto-update.log. Вы можете просматривать их с помощью команды:
-
-bash
-Copy
+## Логирование
+Логи скрипта сохраняются в файл ```/var/log/auto-update.log```. Вы можете просматривать их с помощью команды:
+```
 cat /var/log/auto-update.log
-Лицензия
-Этот проект распространяется под лицензией MIT.
+```
+## Лицензия
+Этот проект распространяется под лицензией [MIT](https://opensource.org/license/mit).
 
-Автор
-@indie_master
+## Автор
+* [@indie_master](https://t.me/indie_master)
 
-GitHub: ваш-профиль
+* GitHub: [indie-master](https://github.com/indie-master)
 
-Email: indiemaster98@gmail.com
+* Email: indiemaster98@gmail.com
 
-Благодарности
-Спасибо сообществу за вдохновение и поддержку!
+## Благодарности
+* Спасибо сообществу за вдохновение и поддержку!
